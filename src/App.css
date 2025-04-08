@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+.main{
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.main-con{
+  z-index: 999;
+  padding: 2vw;
+  height: 50vh;
+  width: 30vw;
+  background-color: aqua;
+}
+
+.main-con textarea{
+  margin-top: 2vw;
+  border: none;
+  outline: none;
+  padding: 1.5vw;
+  height: 20vh;
+  width: 25vw;
+  resize: none;
+}
+
+.btn{
+  margin-top: 2vw;
+  height: 5vh;
+  width: 10vw;
+  border: none;
+}
+
+.btn button{
+  border-radius: 5px;
+  border: none;
+  color: white;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.btn button:hover{
+  cursor: pointer;
+  scale: 0.9;
+  transition: 1s ease;
+}
+
+.over::-webkit-scrollbar{
+  display: none;
+}
