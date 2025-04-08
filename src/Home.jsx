@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect, useCallback, createElement } from "
 import socketIO from "socket.io-client";
 import ReactPlayer from "react-player";
 import axios from "axios";
-import "./app.css";
+import "./App.css";
 import Cookies from 'js-cookie';
 import { ToastContainer , toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
