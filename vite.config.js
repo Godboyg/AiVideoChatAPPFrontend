@@ -11,10 +11,11 @@ export default defineConfig({
   ],
   server : {
     proxy : {
-      "/login" : {
+      "/api" : {
         target : "https://aivediochatappbackend.onrender.com",
         changeOrigin: true,
         secure : false,
+        rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
   },
