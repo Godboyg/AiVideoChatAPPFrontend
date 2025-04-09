@@ -53,6 +53,13 @@ function Home() {
   }
  },[])
 
+  useEffect(()=>{
+  if(socket.id){
+    console.log(socket.id);
+    toast.error("Start Call!" , { position : "top-right" , autoClose : 1200 })
+  }
+ },[])
+
   socket.on("connect",() => {
     console.log("socket connected",socket.id);
   })
