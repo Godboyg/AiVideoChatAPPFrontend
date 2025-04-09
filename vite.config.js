@@ -15,7 +15,6 @@ export default defineConfig({
         target : "https://aivediochatappbackend.onrender.com",
         changeOrigin: true,
         secure : false,
-        rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
   },
