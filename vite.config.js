@@ -11,7 +11,7 @@ export default defineConfig({
   ],
   server : {
     proxy : {
-      "/api" : {
+      "/login" : {
         target : "https://aivediochatappbackend.onrender.com",
         changeOrigin: true,
         secure : false,
