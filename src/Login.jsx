@@ -15,7 +15,7 @@ function Login() {
     }
 
     useEffect(()=>{
-        rs();
+        cs();
     })
 
     const handleSubmit = async(e)=>{
