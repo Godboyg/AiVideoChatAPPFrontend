@@ -22,7 +22,7 @@ function Home() {
     }
 
     useEffect(()=>{
-        rs();
+        cs();
     })
 
   const [ aiMessage , setAiMessage] = useState()
