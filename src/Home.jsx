@@ -16,7 +16,8 @@ const socket = socketIO(API , { transports : ['websockets'] });
 
 function Home() {
 
-  const navigate = useNavigate();  
+  const navigate = useNavigate(); 
+  console.log("api",API);
   
     const cs = async() => {
         const rs = await axios.get(`${API}/ping`);
