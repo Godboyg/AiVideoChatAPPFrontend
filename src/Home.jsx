@@ -41,8 +41,8 @@ function Home() {
     console.log(socket.id);
   })
 
-  socket.on("connect",socket => {
-    console.log("socket connected",socket);
+  socket.on("connect",() => {
+    console.log("socket connected",socket.id);
   })
 
   useEffect(() => {
