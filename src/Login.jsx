@@ -8,13 +8,14 @@ function Login() {
     const [ email , setEmail ] = useState()
     const [ interest , setInterest] = useState();
     const navigate = useNavigate();
+    const API = import.meta.env.VITE_API_URL;
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
         setEmail("");
         setInterest("");
         const data = { email , interest };
-        const res = await axios.post("/api/login", data);
+        const res = await axios.post(`${API}/login`, data);
         console.log(res.data.message);
         if(res.data.message === "user created"){
             toast.success("Login Successful!", { position: "top-right", onClose: () => navigate("/home"),
