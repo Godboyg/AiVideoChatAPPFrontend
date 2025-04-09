@@ -48,6 +48,14 @@ function Home() {
     console.log(socket.id);
   })
 
+  useEffect(()=>{
+  if(socket.id){
+    console.log(socket.id);
+  }else{
+    toast.error("socket not connected try again!" , { position : "top-right" , autoClose : 1200 })
+  }
+ },[])
+
   socket.on("connect",() => {
     console.log("socket connected",socket.id);
   })
