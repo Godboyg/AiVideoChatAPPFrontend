@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { RiSendPlaneLine , RiCloseCircleLine , RiMessageFill, RiMessageLine} from "@remixicon/react";
 
 const API = import.meta.env.VITE_API_URL;
+console.log("api",API);
 const ENDPOINT = "https://aivediochatappbackend.onrender.com/";
 const socket = socketIO(API , { transports : ['websockets'] });
 
