@@ -204,7 +204,6 @@ function Home() {
 
   useEffect(()=>{
     const token =  document.cookie.split(';').find(cookie => cookie.trim().startsWith("token="));
-    console.log(token);
   if(!token){
     navigate("/");
   }
