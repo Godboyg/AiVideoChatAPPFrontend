@@ -12,7 +12,7 @@ import { RiSendPlaneLine , RiCloseCircleLine , RiMessageFill, RiMessageLine} fro
 const API = import.meta.env.VITE_API_URL;
 console.log("api",API);
 const ENDPOINT = "https://aivediochatappbackend.onrender.com/";
-const socket = io(import.meta.env.VITE_API_URL , { transports : ['websockets'] });
+const socket = io(API , { transports : ['websockets'] });
 if(socket){
   console.log("socket connected",socket.id)
 }else{
