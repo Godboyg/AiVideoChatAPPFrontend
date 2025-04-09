@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback, createElement } from "react";
-import { socketIO } from "socket.io-client";
+import { io } from "socket.io-client";
 import ReactPlayer from "react-player";
 import axios from "axios";
 import "./App.css";
@@ -12,7 +12,7 @@ import { RiSendPlaneLine , RiCloseCircleLine , RiMessageFill, RiMessageLine} fro
 const API = import.meta.env.VITE_API_URL;
 console.log("api",API);
 const ENDPOINT = "https://aivediochatappbackend.onrender.com/";
-const socket = socketIO("https://aivediochatappbackend.onrender.com" , { transports : ['websockets'] });
+const socket = io(import.meta.env.VITE_API_URL , { transports : ['websockets'] });
 if(socket){
   console.log("socket connected",socket.id)
 }else{
