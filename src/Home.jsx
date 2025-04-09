@@ -45,12 +45,9 @@ function Home() {
   const partnerIdRef = useRef(null);
 
   useEffect(()=>{
-    console.log(socket.id);
-  })
-
-  useEffect(()=>{
   if(socket.id){
     console.log(socket.id);
+    toast.error("Start Call!" , { position : "top-right" , autoClose : 1200 })
   }else{
     toast.error("socket not connected try again!" , { position : "top-right" , autoClose : 1200 })
   }
