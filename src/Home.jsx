@@ -16,6 +16,16 @@ function Home() {
 
   const navigate = useNavigate();  
 
+  const API = import.meta.env.VITE_API_URL;
+
+    const cs = async() => {
+        const rs = await axios.get(`${API}/ping`);
+    }
+
+    useEffect(()=>{
+        rs();
+    })
+
   const [ aiMessage , setAiMessage] = useState()
   const [ messages, setMessages] = useState([]);
   const [ userConnected , setUserConnected ] = useState(false)
