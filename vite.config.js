@@ -9,6 +9,7 @@ export default defineConfig({
     proxy : {
       "/api" : {
         target : "https://aivediochatappbackend.onrender.com",
+        secure : false,
         rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
