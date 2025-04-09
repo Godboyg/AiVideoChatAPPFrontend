@@ -48,11 +48,11 @@ function Home() {
    setTimeout(() => {
      if (socket.connected) {
        console.log("✅ Socket is connected:", socket.id);
-       toast.error("Start Call!" , { position : "top-right" , autoClose : 1200 });
+       toast.success("Start Call!" , { position : "top-right" , autoClose : 1200 });
      } else {
        toast.error("socket not connected try again!" , { position : "top-right" , autoClose : 1200 })
      }
-    }, 5000);
+    }, 3000);
  },[])
 
   socket.on("connect",() => {
