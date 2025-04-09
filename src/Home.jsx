@@ -46,7 +46,7 @@ function Home() {
      } else {
        toast.error("socket not connected try again!" , { position : "top-right" , autoClose : 1200 })
      }
-    }, 3000);
+    }, 2000);
  },[])
 
   socket.on("connect",() => {
