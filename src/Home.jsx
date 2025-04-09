@@ -42,6 +42,9 @@ function Home() {
    setTimeout(() => {
      if (socket.connected) {
        console.log("✅ Socket is connected:", socket.id);
+       const tok =  document.cookie.split(';').find(cookie => cookie.trim().startsWith("token="));
+       const token = tok.replace("token=","");
+       socket.emit("logged-user",token);
        toast.success("Start Call!" , { position : "top-right" , autoClose : 1200 });
      } else {
        toast.error("socket not connected try again!" , { position : "top-right" , autoClose : 1200 })
