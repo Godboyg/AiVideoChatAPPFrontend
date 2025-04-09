@@ -14,7 +14,7 @@ function Login() {
         setEmail("");
         setInterest("");
         const data = { email , interest };
-        const res = await axios.post("/login", data);
+        const res = await axios.post("/api/login", data);
         console.log(res.data.message);
         if(res.data.message === "user created"){
             toast.success("Login Successful!", { position: "top-right", onClose: () => navigate("/home"),
