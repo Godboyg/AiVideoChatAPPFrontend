@@ -41,6 +41,10 @@ function Home() {
     console.log(socket.id);
   })
 
+  socket.on("connect",socket => {
+    console.log("socket connected",socket);
+  })
+
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ video: true })
       .then((mediaStream) => {
