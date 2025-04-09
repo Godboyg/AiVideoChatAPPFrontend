@@ -12,15 +12,9 @@ import { RiSendPlaneLine , RiCloseCircleLine , RiMessageFill, RiMessageLine} fro
 const API = import.meta.env.VITE_API_URL;
 console.log("api",API);
 const ENDPOINT = "https://aivediochatappbackend.onrender.com/";
-const socket = io("https://aivediochatappbackend.onrender.com/");
-if(socket){
-  console.log("socket connected",socket.id)
-}else{
-  console.log("socket not connected");
-}
+const socket = io(API);
 
 function Home() {
-
   const navigate = useNavigate(); 
   console.log("api",API);
   
