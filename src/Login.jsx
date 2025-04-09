@@ -10,6 +10,14 @@ function Login() {
     const navigate = useNavigate();
     const API = import.meta.env.VITE_API_URL;
 
+    const cs = async() => {
+        const rs = await axios.get(`${API}/ping`);
+    }
+
+    useEffect(()=>{
+        rs();
+    })
+
     const handleSubmit = async(e)=>{
         e.preventDefault();
         setEmail("");
