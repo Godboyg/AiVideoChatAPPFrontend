@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback, createElement } from "react";
-import socketIO from "socket.io-client";
+import { socketIO } from "socket.io-client";
 import ReactPlayer from "react-player";
 import axios from "axios";
 import "./App.css";
