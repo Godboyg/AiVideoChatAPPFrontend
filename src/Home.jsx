@@ -46,7 +46,7 @@ function Home() {
        const token = tok.replace("token=","");
        console.log("token",token);
        socket.emit("logged-user",token);
-       toast.success("Start Call!" , { position : "top-right" , autoClose : 1200 });
+       toast.success("Socket Connected!" , { position : "top-right" , autoClose : 1200 });
      } else {
        toast.error("socket not connected try again!" , { position : "top-right" , autoClose : 1200 })
      }
@@ -171,6 +171,12 @@ function Home() {
       pc.addTrack(track, localStream);
     });
 
+    if(localStream){
+      toast.success("Searching Partner!!" , { position : "top-right" , autoClose : 1200 });
+    }else{
+      toast.error("try again!" , { position : "top-right" , autoClose : 1200 });
+    }
+
     pc.onicecandidate = (event) => {
       if (event.candidate) {
         socket.emit("candidate", { candidate: event.candidate, peerId: partnerIdRef.current });
@@ -185,6 +191,11 @@ function Home() {
     };
 
     console.log("remote stream",remoteStream);
+    if(remoteStream){
+      toast.success("Partner Matched Call Started!" , { position : "top-right" , autoClose : 1200 });
+    }else{
+      toast.error("try again!" , { position : "top-right" , autoClose : 1200 });
+    }
 
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
@@ -201,13 +212,13 @@ function Home() {
 
   useEffect(()=>{
     const token =  document.cookie.split(';').find(cookie => cookie.trim().startsWith("token="));
-  if(!token){
-    navigate("/");
-  }
-  else{
-    setAuthenticated(true);
-    const tk = token.replace("token=","")
-  }
+    if(!token){
+      navigate("/");
+    }
+    else{
+      setAuthenticated(true);
+      const tk = token.replace("token=","")
+    }
   },[])
 
   const handleLogout = async() => {
@@ -222,8 +233,7 @@ function Home() {
       sender: partnerIdRef.current,
       timestamp: Date.now(),
     };
-    console.log("peerid",partnerIdRef.current)
-    // setMessages((prev) => [...prev, message]);
+    console.log("peerid",partnerIdRef.current);
     socket.emit("send-message", message);
     setValue("");
   }
@@ -235,19 +245,19 @@ function Home() {
     {
       authenticated ? (
         <div>
-      <div className="flex items-center justify-between py-3 px-5 max-sm:p-7 bg-green-200 max-sm:bg-green-200">
-        <h2 className="font-bold text-2xl">Soulmegal</h2>
+      <div className="flex items-center justify-between py-3 px-5 max-sm:py-3 max-sm:px-4 bg-green-200 max-sm:bg-green-200">
+        <h2 className="font-bold text-xl">Soulmegal</h2>
         <button className="p-3 bg-black rounded-xl text-white hover:cursor-pointer max-sm:mr-0" onClick={handleLogout}>LogOut</button>
       </div>
       <div className="flex">
         <div className="">
         <div className="flex max-sm:flex-col max-sm:gap-25 items-center justify-center ml-10 h-[75vh] overflow-hidden w-[65vw] max-sm:w-[80vw] max-sm:h-[65vh]">
-         <div className="flex items-center justify-center h-[20vh] w-full">
+         <div className="flex items-center justify-center max-sm:h-[15vh] w-full">
            {localStream && <ReactPlayer url={localStream} playing />}
          </div>
          {remoteStream ? (
           <>
-          <div className="flex items-center justify-center max-sm:h-[20vh] w-full">
+          <div className="flex items-center justify-center max-sm:h-[15vh] w-full">
             <ReactPlayer
               url={remoteStream}
               playing
@@ -260,13 +270,13 @@ function Home() {
             <p className="mt-5">Waiting for other user...</p>
            )}
          </div>
-        <div className="mt-5 ml-40 max-sm:ml-30 w-[20vw] max-sm:w-[50vw] flex items-center justify-between">
-         <button onClick={startConnection} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[4vw] max-sm:h-20">Start Call</button>
-         <button onClick={handleChangeUser} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[4vw] max-sm:h-20">Change Call</button>
-         { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[4vw] max-sm:h-20 hidden" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
+        <div className="mt-5 ml-40 max-sm:ml-20 w-[20vw] max-sm:w-[70vw] flex items-center justify-between">
+         <button onClick={startConnection} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[2.5vw] max-sm:h-16">Start Call</button>
+         <button onClick={handleChangeUser} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[2.5vw] max-sm:h-16">Change Call</button>
+         { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[2.5vw] max-sm:h-16 hidden" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
         </div>
         </div>
-        <div className={`max-sm:w-full max-sm:absolute max-sm:p-10 w-full ${ userConnected ? "backdrop-blur-sm" : ""} `}>
+        <div className={`max-sm:w-full max-sm:absolute max-sm:p-7 w-full ${ userConnected ? "backdrop-blur-sm" : ""} `}>
         {
           userConnected ? (
             <>
@@ -276,11 +286,11 @@ function Home() {
           <div className="overflow-auto over">
             <div className="h-[70vh] w-full">
             {messages.map((msg, i) => (
-          <div key={i} className={`flex mt-3 ${msg.sender === socket.id ? "justify-end" : ""}`}>
+          <div key={i} className={`flex mt-3 ${msg.sender !== socket.id ? "justify-end" : ""}`}>
             <div
               className={`p-2 max-w-xs rounded-xl ${
-                msg.sender === socket.id
-                  ? "bg-green-200 rounded-br-none"
+                msg.sender !== socket.id
+                  ? "bg-green-500 rounded-br-none"
                   : "bg-white rounded-bl-none"
               }`}
             >
