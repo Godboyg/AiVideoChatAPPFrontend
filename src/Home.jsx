@@ -26,7 +26,7 @@ function Home() {
     })
 
   useEffect(() => {
-    document.title = "AI Video Chat – Connect Instantly with Shared Interests";
+    document.title = "⚡ AI Video Chat – Meet Instantly";
   }, []);
 
   const [ aiMessage , setAiMessage] = useState()
