@@ -18,6 +18,10 @@ function Login() {
         cs();
     })
 
+    useEffect(() => {
+      document.title = "AI Video Chat – Connect Instantly with Shared Interests";
+    }, []);
+
     const handleSubmit = async(e)=>{
         e.preventDefault();
         setEmail("");
