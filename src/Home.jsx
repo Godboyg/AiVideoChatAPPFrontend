@@ -35,8 +35,6 @@ function Home() {
   const [ value , setValue ] = useState("Hey!!")
   
   const [ authenticated , setAuthenticated ] = useState(false)
-  const [ localStream, setLocalStream] = useState();
-  const [ remoteStream, setRemoteStream] = useState();
   const [ connected, setConnected] = useState(false);
   const peerConnectionRef = useRef(null);
   const partnerIdRef = useRef(null);
@@ -254,7 +252,6 @@ function Home() {
         <div className="">
         <div className="flex max-sm:flex-col max-sm:bg-black max-sm:gap-5 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
          <div className="flex items-center max-sm:bg-green-500 justify-center w-full">
-{/*            {localStream && <ReactPlayer url={localStream} playing autoplay/>} */}
            <video ref={videoRef} autoPlay muted playsInline className="w-full h-auto" />
          </div>
           <div className="flex items-center max-sm:bg-800 justify-center w-full">
