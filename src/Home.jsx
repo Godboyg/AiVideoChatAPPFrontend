@@ -116,6 +116,10 @@ function Home() {
       console.log("other users id",list);
     })
 
+    socket.on("callEnded" , () => {
+      toast.error("Call Ended", { position : "top-right" , autoClose : 1000 })
+    })
+
     socket.on("disconnect",()=>{
       setUserConnected(false);
       window.location.reload();
