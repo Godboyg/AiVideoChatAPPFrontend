@@ -200,6 +200,7 @@ function Home() {
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
     socket.emit("offer", { offer, peerId: partnerIdRef.current });
+    console.log("partner socket id peerId",partnerIdRef.current)
   }
   
   useEffect(()=>{
