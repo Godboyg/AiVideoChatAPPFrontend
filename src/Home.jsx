@@ -185,6 +185,9 @@ function Home() {
     };
 
     console.log("remote stream",remoteStream);
+    remoteStream.getTracks().forEach(track => {
+      console.log(`${track.kind} track readyState:`, track.readyState); // should be 'live'
+    });
 
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
