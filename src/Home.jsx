@@ -193,14 +193,14 @@ function Home() {
     };
 
     console.log("remote stream",remoteStream);
-    if(remoteStream){
-      toast.success("Partner Matched Call Started!" , { position : "top-right" , autoClose : 1200 });
-    }
+    // if(remoteStream){
+    //   toast.success("Partner Matched Call Started!" , { position : "top-right" , autoClose : 1200 });
+    // }
 
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
-    socket.emit("offer", { offer, peerId: partnerIdRef.current });
     console.log("partner socket id peerId",partnerIdRef.current)
+    socket.emit("offer", { offer, peerId: partnerIdRef.current });
   }
   
   useEffect(()=>{
