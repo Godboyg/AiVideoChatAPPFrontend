@@ -231,7 +231,7 @@ function Home() {
   return (
     <>
     <ToastContainer />
-    <div className="h-screen max-sm:h-screen max-sm:w-full bg-green-100 max-sm:bg-green-100">
+    <div className={`h-screen max-sm:h-screen max-sm:w-full bg-green-100 max-sm:bg-green-100 ${ userConnected ? "backdrop-blur-sm" : ""} `}>
     {
       authenticated ? (
         <div>
