@@ -159,7 +159,7 @@ function Home() {
   },[]);
 
   async function startConnection() {
-    if (!localStream) return;
+    if (!videoRef.current) return;
 
     const configuration = {
       iceServers: [
