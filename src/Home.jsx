@@ -250,8 +250,8 @@ function Home() {
             <h2 className="font-bold text-xl">Soulmegal</h2>
             <button className="p-3 bg-black rounded-xl text-white hover:cursor-pointer max-sm:mr-0" onClick={handleLogout}>LogOut</button>
           </div>
-          <div className="flex">
-            <div className="">
+          <div className="">
+            <div className="flex">
               <div className="flex max-sm:flex-col max-sm:gap-5 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
                 <div className="flex items-center justify-center w-full">
                   <video ref={videoRef} autoPlay muted playsInline className="w-full h-auto" />
