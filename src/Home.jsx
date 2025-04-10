@@ -40,6 +40,8 @@ function Home() {
   const [ connected, setConnected] = useState(false);
   const peerConnectionRef = useRef(null);
   const partnerIdRef = useRef(null);
+  const videoRef = useRef(null);
+  const remoteVideoRef = useRef(null);
 
   useEffect(()=>{
    setTimeout(() => {
@@ -60,9 +62,10 @@ function Home() {
   })
 
   useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ video: true })
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((mediaStream) => {
-        setLocalStream(mediaStream);
+        // setLocalStream(mediaStream);
+        videoRef.current.srcObject = mediaStream;
       })
       .catch(console.error);
 
@@ -188,7 +191,8 @@ function Home() {
     pc.ontrack = (event) => {
       console.log("evenst",event.streams[0]);
       if (event.streams && event.streams[0]) {
-        setRemoteStream(event.streams[0]);
+        // setRemoteStream(event.streams[0]);
+        remoteVideoRef.current.srcObject = event.streams[0]
       }
     };
 
@@ -250,11 +254,12 @@ function Home() {
         <div className="">
         <div className="flex max-sm:flex-col max-sm:bg-black max-sm:gap-5 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
          <div className="flex items-center max-sm:bg-green-500 justify-center w-full">
-           {localStream && <ReactPlayer url={localStream} playing autoplay/>}
+{/*            {localStream && <ReactPlayer url={localStream} playing autoplay/>} */}
+           <video ref={videoRef} autoPlay muted playsInline className="w-full h-auto" />
          </div>
           <div className="flex items-center max-sm:bg-800 justify-center w-full">
-           { remoteStream ? (
-            <ReactPlayer url={remoteStream} playing />
+           { remoteVideoRef ? (
+            <video ref={remoteVideoRef} autoPlay muted playsInline className="w-full h-auto" />
            ) : (
             <p className="mt-5">Waiting for other user...</p>
            )}
