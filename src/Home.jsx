@@ -252,12 +252,12 @@ function Home() {
       </div>
       <div className="flex">
         <div className="">
-        <div className="flex max-sm:flex-col max-sm:bg-black max-sm:gap-5 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
-         <div className="flex items-center max-sm:bg-green-500 justify-center w-full">
+        <div className="flex max-sm:flex-col bg-black max-sm:gap-5 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
+         <div className="flex items-center bg-green-500 justify-center w-full">
            kushal
            <video ref={videoRef} autoPlay muted playsInline className="w-full h-auto" />
          </div>
-          <div className="flex items-center max-sm:bg-800 justify-center w-full">
+          <div className="flex items-center bg-green-800 justify-center w-full">
             kushal
            { remoteVideoRef ? (
             <video ref={remoteVideoRef} autoPlay muted playsInline className="w-full h-auto" />
