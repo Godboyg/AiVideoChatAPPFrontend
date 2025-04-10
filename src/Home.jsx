@@ -252,11 +252,11 @@ function Home() {
       </div>
       <div className="flex">
         <div className="">
-        <div className="flex max-sm:flex-col max-sm:gap-25 items-center justify-center ml-10 h-[75vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[65vh]">
-         <div className="flex items-center justify-center max-sm:h-[7vh] w-full">
+        <div className="flex max-sm:flex-col max-sm:gap-5 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
+         <div className="flex items-center justify-center w-full">
            {localStream && <ReactPlayer url={localStream} playing />}
          </div>
-          <div className="flex items-center justify-center max-sm:h-[7vh] w-full">
+          <div className="flex items-center justify-center w-full">
            { remoteStream ? (
             <ReactPlayer url={remoteStream} playing />
            ) : (
