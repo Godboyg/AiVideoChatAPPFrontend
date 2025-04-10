@@ -247,7 +247,7 @@ function Home() {
          </div>
          {remoteStream ? (
           <>
-          <div className="flex max-sm:bg-black bg-green-500 items-center justify-center max-sm:h-[20vh] w-full">
+          <div className="flex items-center justify-center max-sm:h-[20vh] w-full">
             <ReactPlayer
               url={remoteStream}
               playing
