@@ -189,7 +189,6 @@ function Home() {
     pc.ontrack = (event) => {
       console.log("evenst",event.streams[0]);
       if (event.streams && event.streams[0]) {
-        // setRemoteStream(event.streams[0]);
         remoteVideoRef.current.srcObject = event.streams[0]
       }
     };
