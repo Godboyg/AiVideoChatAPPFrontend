@@ -174,7 +174,7 @@ function Home() {
     });
 
     if(localStream){
-      toast.success("Searching Partner!!" , { position : "top-right" , autoClose : 1200 });
+      toast.success("Requesting Partner...!!" , { position : "top-right" , autoClose : 1200 });
     }else{
       toast.error("try again!" , { position : "top-right" , autoClose : 1200 });
     }
@@ -193,13 +193,9 @@ function Home() {
     };
 
     console.log("remote stream",remoteStream);
-    // if(remoteStream){
-    //   toast.success("Partner Matched Call Started!" , { position : "top-right" , autoClose : 1200 });
-    // }
 
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
-    console.log("partner socket id peerId",partnerIdRef.current)
     socket.emit("offer", { offer, peerId: partnerIdRef.current });
   }
   
@@ -252,11 +248,11 @@ function Home() {
       </div>
       <div className="flex">
         <div className="">
-        <div className="flex max-sm:flex-col max-sm:gap-5 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
-         <div className="flex items-center justify-center w-full">
-           {localStream && <ReactPlayer url={localStream} playing />}
+        <div className="flex max-sm:flex-col max-sm:bg-black max-sm:gap-5 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
+         <div className="flex items-center max-sm:bg-green-500 justify-center w-full">
+           {localStream && <ReactPlayer url={localStream} playing autoplay/>}
          </div>
-          <div className="flex items-center justify-center w-full">
+          <div className="flex items-center max-sm:bg-800 justify-center w-full">
            { remoteStream ? (
             <ReactPlayer url={remoteStream} playing />
            ) : (
