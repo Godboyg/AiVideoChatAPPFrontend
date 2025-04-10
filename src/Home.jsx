@@ -278,13 +278,13 @@ function Home() {
             <div className={`w-full p-3 bg-green-300 relative overflow-hidden ${ userConnected ? "scale-100 opacity-100" : ""}`}>
           <p className="font-bold">Ai : {aiMessage}</p>
           <div className="overflow-auto over">
-            <div className="h-[70vh] w-full">
+            <div className="h-[60vh] w-full">
             {messages.map((msg, i) => (
-          <div key={i} className={`flex mt-3 ${msg.sender !== socket.id ? "justify-end" : ""}`}>
+          <div key={i} className={`flex mt-3 ${msg.sender === socket.id ? "justify-end" : ""}`}>
             <div
               className={`p-2 max-w-xs rounded-xl ${
-                msg.sender !== socket.id
-                  ? "bg-green-500 rounded-br-none"
+                msg.sender === socket.id
+                  ? "bg-green-300 rounded-br-none"
                   : "bg-white rounded-bl-none"
               }`}
             >
