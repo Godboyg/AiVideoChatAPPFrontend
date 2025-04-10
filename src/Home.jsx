@@ -10,8 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { RiSendPlaneLine , RiCloseCircleLine , RiMessageFill, RiMessageLine} from "@remixicon/react";
 
 const API = import.meta.env.VITE_API_URL;
-console.log("api",API);
-const ENDPOINT = "https://aivediochatappbackend.onrender.com/";
+console.log("api_key",API);
 const socket = io(API);
 
 function Home() {
@@ -252,12 +251,12 @@ function Home() {
       <div className="flex">
         <div className="">
         <div className="flex max-sm:flex-col max-sm:gap-25 items-center justify-center ml-10 h-[75vh] overflow-hidden w-[65vw] max-sm:w-[80vw] max-sm:h-[65vh]">
-         <div className="flex items-center justify-center max-sm:h-[15vh] w-full">
+         <div className="flex items-center justify-center max-sm:h-[10vh] w-full">
            {localStream && <ReactPlayer url={localStream} playing />}
          </div>
          {remoteStream ? (
           <>
-          <div className="flex items-center justify-center max-sm:h-[15vh] w-full">
+          <div className="flex items-center justify-center max-sm:h-[10vh] w-full">
             <ReactPlayer
               url={remoteStream}
               playing
@@ -270,10 +269,10 @@ function Home() {
             <p className="mt-5">Waiting for other user...</p>
            )}
          </div>
-        <div className="mt-5 ml-40 max-sm:ml-20 w-[20vw] max-sm:w-[70vw] flex items-center justify-between">
-         <button onClick={startConnection} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[2.5vw] max-sm:h-16">Start Call</button>
-         <button onClick={handleChangeUser} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[2.5vw] max-sm:h-16">Change Call</button>
-         { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[2.5vw] max-sm:h-16 hidden" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
+        <div className="mt-5 ml-40 max-sm:ml-20 w-[20vw] max-sm:w-[60vw] flex max-sm:flex-wrap items-center justify-between">
+         <button onClick={startConnection} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16">Start Call</button>
+         <button onClick={handleChangeUser} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16">Change Call</button>
+         { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16 hidden" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
         </div>
         </div>
         <div className={`max-sm:w-full max-sm:absolute max-sm:p-7 w-full ${ userConnected ? "backdrop-blur-sm" : ""} `}>
