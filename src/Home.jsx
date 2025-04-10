@@ -255,21 +255,15 @@ function Home() {
          <div className="flex items-center justify-center max-sm:h-[7vh] w-full">
            {localStream && <ReactPlayer url={localStream} playing />}
          </div>
-         {remoteStream ? (
-          <>
           <div className="flex items-center justify-center max-sm:h-[7vh] w-full">
-            <ReactPlayer
-              url={remoteStream}
-              playing
-              width="400px"
-              height="400px"
-            />
-          </div>
-          </>
-           ): (
+           { remoteStream ? (
+            <ReactPlayer url={remoteStream} playing />
+           ) : (
             <p className="mt-5">Waiting for other user...</p>
            )}
+          </div>
          </div>
+        </div>
         <div className="mt-5 ml-40 max-sm:ml-20 w-[20vw] max-sm:w-[60vw] flex max-sm:flex-wrap items-center justify-between">
          <button onClick={startConnection} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16">Start Call</button>
          <button onClick={handleChangeUser} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16">Change Call</button>
