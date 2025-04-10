@@ -62,7 +62,6 @@ function Home() {
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((mediaStream) => {
-        // setLocalStream(mediaStream);
         videoRef.current.srcObject = mediaStream;
       })
       .catch(console.error);
@@ -163,7 +162,11 @@ function Home() {
     if (!localStream) return;
 
     const configuration = {
-      iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
+      iceServers: [
+        { urls: "stun:stun.l.google.com:19302" },
+        { urls: "stun:stun2.l.google.com:19302" },
+        { urls: "stun:stun3.l.google.com:19302" }
+      ]
     };
 
     const pc = new RTCPeerConnection(configuration);
@@ -251,9 +254,11 @@ function Home() {
         <div className="">
         <div className="flex max-sm:flex-col max-sm:bg-black max-sm:gap-5 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
          <div className="flex items-center max-sm:bg-green-500 justify-center w-full">
+           kushal
            <video ref={videoRef} autoPlay muted playsInline className="w-full h-auto" />
          </div>
           <div className="flex items-center max-sm:bg-800 justify-center w-full">
+            kushal
            { remoteVideoRef ? (
             <video ref={remoteVideoRef} autoPlay muted playsInline className="w-full h-auto" />
            ) : (
