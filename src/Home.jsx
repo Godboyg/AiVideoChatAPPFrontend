@@ -289,7 +289,7 @@ function Home() {
             <div className={`w-full h-[50vh] p-3 bg-green-300 shadow-2xl relative overflow-hidden ${ userConnected ? "scale-100 opacity-100" : ""}`}>
               <p className="font-bold">Ai : {aiMessage}</p>
               <div className="overflow-auto over">
-               <div className="w-full h-[40vh] bg-black">
+               <div className="w-full">
                  {messages.map((msg, i) => (
                    <div key={i} className={`flex mt-3 ${msg.sender === socket.id ? "justify-end" : ""}`}>
                      <div
