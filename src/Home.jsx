@@ -40,6 +40,7 @@ function Home() {
   const partnerIdRef = useRef(null);
   const videoRef = useRef(null);
   const remoteVideoRef = useRef(null);
+  const remoteStream = new MediaStream();
 
   useEffect(()=>{
    setTimeout(() => {
@@ -63,6 +64,10 @@ function Home() {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((mediaStream) => {
         videoRef.current.srcObject = mediaStream;
+
+        mediaStream.getTracks().forEach((track) => {
+         pc.addTrack(track, stream);
+        });
       })
       .catch(console.error);
 
@@ -173,11 +178,11 @@ function Home() {
     console.log(pc);
     peerConnectionRef.current = pc;
 
-    localStream.getTracks().forEach((track) => {
-      pc.addTrack(track, localStream);
-    });
+    // localStream.getTracks().forEach((track) => {
+    //   pc.addTrack(track, localStream);
+    // });
 
-    if(localStream){
+    if(videoRef.current){
       toast.success("Requesting Partner...!!" , { position : "top-right" , autoClose : 1200 });
     }else{
       toast.error("try again!" , { position : "top-right" , autoClose : 1200 });
@@ -192,7 +197,12 @@ function Home() {
     pc.ontrack = (event) => {
       console.log("evenst",event.streams[0]);
       if (event.streams && event.streams[0]) {
-        remoteVideoRef.current.srcObject = event.streams[0]
+        event.streams[0].getTracks().forEach((track) => {
+         remoteStream.addTrack(track);
+        });
+        if (remoteVideoRef.current) {
+         remoteVideoRef.current.srcObject = remoteStream;
+        }
       }
     };
 
