@@ -262,7 +262,7 @@ function Home() {
            { remoteVideoRef ? (
             <video ref={remoteVideoRef} autoPlay muted playsInline className="w-full h-auto" />
            ) : (
-            <p className="mt-5">Waiting for other user...</p>
+            <p className="mt-5">Waiting for other user...kushal.....</p>
            )}
           </div>
          </div>
