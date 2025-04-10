@@ -59,6 +59,7 @@ function Login() {
     <>
     <ToastContainer/>
     <div className="h-screen w-full bg-zinc-800 flex items-center justify-center max-sm:p-5">
+        <h1 className="text-white font-bold mb-5">Welcome to AI Video Chat</h1>
         <div className="bg-black text-white max-sm:w-full p-[2vw] rounded-2xl hover:border hover:border-cyan-600">
             <form onSubmit={handleSubmit}>
                 <div className="flex flex-col">
