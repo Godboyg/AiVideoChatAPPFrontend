@@ -32,8 +32,8 @@ function Home() {
   const [ value , setValue ] = useState("Hey!!")
   
   const [ authenticated , setAuthenticated ] = useState(false)
-  const [ localStream, setLocalStream] = useState(null);
-  const [ remoteStream, setRemoteStream] = useState(null);
+  const [ localStream, setLocalStream] = useState();
+  const [ remoteStream, setRemoteStream] = useState();
   const [ connected, setConnected] = useState(false);
   const peerConnectionRef = useRef(null);
   const partnerIdRef = useRef(null);
