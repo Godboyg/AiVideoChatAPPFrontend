@@ -275,7 +275,7 @@ function Home() {
           userConnected ? (
             <>
             <p className="flex items-center justify-end mb-3"><RiCloseCircleLine size={30} onClick={() => setUserConnected(false)}/></p>
-            <div className={`w-full h-[50vh] p-3 bg-green-300 relative overflow-hidden ${ userConnected ? "scale-100 opacity-100" : ""}`}>
+            <div className={`w-full h-[50vh] p-3 bg-green-300 shadow-2xl relative overflow-hidden ${ userConnected ? "scale-100 opacity-100" : ""}`}>
           <p className="font-bold">Ai : {aiMessage}</p>
           <div className="overflow-auto over">
             <div className="w-full h-[40vh] bg-black">
