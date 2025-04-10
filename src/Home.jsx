@@ -64,10 +64,6 @@ function Home() {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true })
       .then((mediaStream) => {
         videoRef.current.srcObject = mediaStream;
-
-        mediaStream.getTracks().forEach((track) => {
-         peerConnectionRef.current.addTrack(track, stream);
-        });
       })
       .catch(console.error);
 
@@ -205,8 +201,15 @@ function Home() {
         }
       }
     };
+    const stream = videoRef.current?.srcObject;
 
-    console.log("remote stream",remoteStream);
+    if(stream instanceof MediaStream){
+      stream.getTracks().forEach((track) => {
+         pc.addTrack(track, stream);
+      });
+    }
+
+    console.log("remote stream",remoteVideoRef.current.srcObject);
 
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
