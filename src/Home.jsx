@@ -66,7 +66,7 @@ function Home() {
         videoRef.current.srcObject = mediaStream;
 
         mediaStream.getTracks().forEach((track) => {
-         pc.addTrack(track, stream);
+         peerConnectionRef.current.addTrack(track, stream);
         });
       })
       .catch(console.error);
