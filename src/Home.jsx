@@ -178,7 +178,7 @@ function Home() {
     };
 
     pc.ontrack = (event) => {
-      console.log(event);
+      console.log("evenst",event);
       if (event.streams && event.streams[0]) {
         setRemoteStream(event.streams[0]);
       }
