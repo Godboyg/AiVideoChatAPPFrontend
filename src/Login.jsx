@@ -19,7 +19,7 @@ function Login() {
     })
 
     useEffect(() => {
-      document.title = "AI Video Chat – Connect Instantly with Shared Interests";
+      document.title = "⚡ AI Video Chat – Meet Instantly";
     }, []);
 
     const handleSubmit = async(e)=>{
