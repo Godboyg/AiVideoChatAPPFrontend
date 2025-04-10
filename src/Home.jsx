@@ -195,8 +195,6 @@ function Home() {
     console.log("remote stream",remoteStream);
     if(remoteStream){
       toast.success("Partner Matched Call Started!" , { position : "top-right" , autoClose : 1200 });
-    }else{
-      toast.error("try again!" , { position : "top-right" , autoClose : 1200 });
     }
 
     const offer = await pc.createOffer();
