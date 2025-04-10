@@ -193,12 +193,7 @@ function Home() {
     pc.ontrack = (event) => {
       console.log("evenst",event.streams[0]);
       if (event.streams && event.streams[0]) {
-        event.streams[0].getTracks().forEach((track) => {
-         remoteStream.addTrack(track);
-        });
-        if (remoteVideoRef.current) {
-         remoteVideoRef.current.srcObject = remoteStream;
-        }
+        remoteVideoRef.current.srcObject = event.streams[0];
       }
     };
     const stream = videoRef.current?.srcObject;
