@@ -284,7 +284,7 @@ function Home() {
              { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16 hidden" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
             </div>
           </div>
-           <div className={`max-sm:w-full max-sm:absolute top-10 max-sm:p-10 w-full ${ userConnected ? "backdrop-blur-sm" : ""} `}>
+           <div className={`max-sm:w-full max-sm:absolute top-10 max-sm:p-10 w-full ${ userConnected ? "inset-0 bg-opacity-50 " : ""} `}>
            {
             userConnected ? (
             <>
