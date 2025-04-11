@@ -192,12 +192,6 @@ function Home() {
       }
     };
 
-    pc.ontrack = (event) => {
-      console.log("evenst",event.streams[0]);
-      if (event.streams && event.streams[0]) {
-        remoteVideoRef.current.srcObject = event.streams[0];
-      }
-    };
     const stream = videoRef.current?.srcObject;
 
     if(stream instanceof MediaStream){
@@ -206,7 +200,14 @@ function Home() {
       });
     }
 
-    console.log("remote stream",remoteVideoRef.current.srcObject);
+    pc.ontrack = (event) => {
+      console.log("evenst",event.streams[0]);
+      if (event.streams && event.streams[0]) {
+        remoteVideoRef.current.srcObject = event.streams[0];
+      }
+    };
+
+    console.log("remote stream",remoteVideoRef.current?.srcObject);
 
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
@@ -257,7 +258,7 @@ function Home() {
     <div className={`h-screen max-sm:h-screen max-sm:w-full bg-green-100 max-sm:bg-green-100 ${ userConnected ? "backdrop-blur-sm" : ""} `}>
     {
       authenticated ? (
-        <div className="max-sm:relative">
+        <div className="">
           <div className="flex items-center justify-between py-3 px-5 max-sm:py-3 max-sm:px-4 bg-green-200 max-sm:bg-green-200">
             <h2 className="font-bold text-xl">DeepMeet</h2>
             <button className="p-3 bg-black rounded-xl text-white hover:cursor-pointer max-sm:mr-0" onClick={handleLogout}>LogOut</button>
@@ -291,7 +292,7 @@ function Home() {
             <div className={`w-full h-[70vh] p-3 bg-green-300 shadow-2xl overflow-hidden ${ userConnected ? "scale-100 opacity-100" : ""}`}>
               <p className="font-bold">Ai : {aiMessage}</p>
               <div className="overflow-auto over">
-               <div className="w-full h-[53vh] bg-green-400">
+               <div className="w-full h-[56vh] bg-green-400">
                  {messages.map((msg, i) => (
                    <div key={i} className={`flex mt-3 ${msg.sender === socket.id ? "justify-end" : ""}`}>
                      <div
