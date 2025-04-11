@@ -50,7 +50,7 @@ function Home() {
        const tok =  document.cookie.split(';').find(cookie => cookie.trim().startsWith("token="));
        const token = tok.replace("token=","");
        console.log("token frontend",token);
-       socket.emit("logged-user",token);
+       socket.emit("logged-user",{ token });
        toast.success("Socket Connected!" , { position : "top-right" , autoClose : 1200 });
      } else {
        toast.error("socket not connected try again!" , { position : "top-right" , autoClose : 1200 })
