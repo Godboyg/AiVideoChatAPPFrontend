@@ -284,7 +284,7 @@ function Home() {
              { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16 hidden" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
             </div>
           </div>
-           <div className={`max-sm:w-full max-sm:absolute top-10 max-sm:p-10 w-full ${ userConnected ? "inset-0 bg-opacity-50 " : ""} `}>
+           <div className={`max-sm:w-full max-sm:absolute top-10 max-sm:p-10 w-full ${ userConnected ? "inset-0 bg-opacity-50 backdrop-blur" : ""} `}>
            {
             userConnected ? (
             <>
@@ -292,7 +292,7 @@ function Home() {
             <div className={`w-full h-[70vh] p-3 bg-green-300 shadow-2xl overflow-hidden ${ userConnected ? "scale-100 opacity-100" : ""}`}>
               <p className="font-bold">Ai : {aiMessage}</p>
               <div className="overflow-auto over">
-               <div className="w-full max-sm:h-[57vh] h-[50vh] bg-green-400">
+               <div className="w-full max-sm:h-[54vh] h-[50vh] bg-green-400">
                  {messages.map((msg, i) => (
                    <div key={i} className={`flex mt-3 ${msg.sender === socket.id ? "justify-end" : ""}`}>
                      <div
