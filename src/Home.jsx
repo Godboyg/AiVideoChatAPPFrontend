@@ -257,12 +257,12 @@ function Home() {
     <div className={`h-screen max-sm:h-screen max-sm:w-full bg-green-100 max-sm:bg-green-100 ${ userConnected ? "backdrop-blur-sm" : ""} `}>
     {
       authenticated ? (
-        <div className="">
+        <div className="max-sm:relative">
           <div className="flex items-center justify-between py-3 px-5 max-sm:py-3 max-sm:px-4 bg-green-200 max-sm:bg-green-200">
             <h2 className="font-bold text-xl">DeepMeet</h2>
             <button className="p-3 bg-black rounded-xl text-white hover:cursor-pointer max-sm:mr-0" onClick={handleLogout}>LogOut</button>
           </div>
-          <div className="relative">
+          <div className="max-sm:relative">
             <div className="flex">
               <div className="flex max-sm:flex-col max-sm:gap-1 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[80vw] max-sm:h-[65vh]">
                 <div className="flex items-center justify-center w-full">
@@ -291,7 +291,7 @@ function Home() {
             <div className={`w-full h-[70vh] p-3 bg-green-300 shadow-2xl overflow-hidden ${ userConnected ? "scale-100 opacity-100" : ""}`}>
               <p className="font-bold">Ai : {aiMessage}</p>
               <div className="overflow-auto over">
-               <div className="w-full h-[55vh]">
+               <div className="w-full h-[53vh] bg-green-400">
                  {messages.map((msg, i) => (
                    <div key={i} className={`flex mt-3 ${msg.sender === socket.id ? "justify-end" : ""}`}>
                      <div
