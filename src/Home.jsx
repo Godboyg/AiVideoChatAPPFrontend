@@ -264,15 +264,15 @@ function Home() {
           </div>
           <div className="flex">
             <div className="">
-              <div className="flex max-sm:flex-col max-sm:gap-1 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
+              <div className="flex max-sm:flex-col max-sm:gap-1 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[80vw] max-sm:h-[65vh]">
                 <div className="flex items-center justify-center w-full">
-                  <video ref={videoRef} autoPlay muted playsInline className="w-full h-auto" />
+                  <video ref={videoRef} autoPlay muted playsInline className="w-full h-auto rounded-xl" />
                 </div>
                 <div className="flex items-center justify-center w-full">
-                  { remoteVideoRef ? (
-                    <video ref={remoteVideoRef} autoPlay muted playsInline className="w-full h-auto" />
+                  { remoteVideoRef.current ? (
+                    <video ref={remoteVideoRef} autoPlay muted playsInline className="w-full h-auto rounded-xl" />
                   ) : (
-                    <p className="mt-5">Waiting for other user...kushal.....</p>
+                    <p className="mt-5">Waiting for other user.....</p>
                   )}
                 </div>
               </div>
