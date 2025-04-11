@@ -195,13 +195,13 @@ function Home() {
 
     pc.ontrack = (event) => {
       console.log("evenst",event.streams[0]);
-      remoteVideoRef.current.srcObject = event.streams[0];
-      // if (event.streams && event.streams[0]) {
-      //   remoteVideoRef.current.srcObject = event.streams[0];
-      // }
+      // remoteVideoRef.current.srcObject = event.streams[0];
+      if (remoteVideoRef.current && event.streams[0]) {
+        remoteVideoRef.current.srcObject = event.streams[0];
+      }
     };
 
-    console.log("remote stream",remoteVideoRef.current?.srcObject);
+    console.log("remote stream ss",remoteVideoRef.current?.srcObject);
 
     const stream = videoRef.current?.srcObject;
 
