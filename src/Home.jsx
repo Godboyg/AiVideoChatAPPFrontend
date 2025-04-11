@@ -178,10 +178,6 @@ function Home() {
     console.log(pc);
     peerConnectionRef.current = pc;
 
-    // localStream.getTracks().forEach((track) => {
-    //   pc.addTrack(track, localStream);
-    // });
-
     if(videoRef.current){
       toast.success("Requesting Partner...!!" , { position : "top-right" , autoClose : 1200 });
     }else{
@@ -259,7 +255,7 @@ function Home() {
       authenticated ? (
         <div>
           <div className="flex items-center justify-between py-3 px-5 max-sm:py-3 max-sm:px-4 bg-green-200 max-sm:bg-green-200">
-            <h2 className="font-bold text-xl">Soulmegal</h2>
+            <h2 className="font-bold text-xl">DeepMeet</h2>
             <button className="p-3 bg-black rounded-xl text-white hover:cursor-pointer max-sm:mr-0" onClick={handleLogout}>LogOut</button>
           </div>
           <div className="">
@@ -283,7 +279,7 @@ function Home() {
              { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16 hidden" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
             </div>
           </div>
-          <div className={`max-sm:w-full max-sm:absolute max-sm:p-7 w-full ${ userConnected ? "backdrop-blur-sm" : ""} `}>
+          <div className="max-sm:w-full max-sm:absolute max-sm:p-5 w-full">
            {
             userConnected ? (
             <>
