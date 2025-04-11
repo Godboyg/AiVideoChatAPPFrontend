@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer , toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import AdsterraSocialBar from './AdsterraSocialBar';
 
 function Login() {
     const [ email , setEmail ] = useState()
@@ -57,6 +58,7 @@ function Login() {
 
   return (
     <>
+        <AdsterraSocialBar />
     <ToastContainer/>
     <div className="h-screen w-full bg-zinc-800 flex flex-col items-center justify-center max-sm:p-5">
         <h1 className="text-white font-bold text-4xl mb-5">Welcome to AI Video Chat</h1>
@@ -76,6 +78,7 @@ function Login() {
             </form>
         </div>
     </div>
+        <AdsterraSocialBar />
     </>
   )
 }
