@@ -195,9 +195,11 @@ function Home() {
 
     pc.ontrack = (event) => {
       console.log("evenst",event.streams[0]);
-      if (event.streams && event.streams[0]) {
-        remoteVideoRef.current.srcObject = event.streams[0];
-      }
+      const strm = event.streams[0];
+      remoteVideoRef.current.srcObject = strm;
+      // if (event.streams && event.streams[0]) {
+      //   remoteVideoRef.current.srcObject = event.streams[0];
+      // }
     };
 
     console.log("remote stream",remoteVideoRef.current?.srcObject);
@@ -271,7 +273,7 @@ function Home() {
                   <video ref={videoRef} autoPlay muted playsInline className="w-full h-auto rounded-xl" />
                 </div>
                 <div className="flex items-center justify-center w-full">
-                  { remoteVideoRef.current ? (
+                  { remoteVideoRef ? (
                     <video ref={remoteVideoRef} autoPlay muted playsInline className="w-full h-auto rounded-xl" />
                   ) : (
                     <p className="mt-5">Waiting for other user.....</p>
