@@ -257,14 +257,14 @@ function Home() {
     <div className={`h-screen max-sm:h-screen max-sm:w-full bg-green-100 max-sm:bg-green-100 ${ userConnected ? "backdrop-blur-sm" : ""} `}>
     {
       authenticated ? (
-        <div className="max-sm:relative">
+        <div className="">
           <div className="flex items-center justify-between py-3 px-5 max-sm:py-3 max-sm:px-4 bg-green-200 max-sm:bg-green-200">
             <h2 className="font-bold text-xl">DeepMeet</h2>
             <button className="p-3 bg-black rounded-xl text-white hover:cursor-pointer max-sm:mr-0" onClick={handleLogout}>LogOut</button>
           </div>
-          <div className="">
-            <div className="flex">
-              <div className="flex max-sm:flex-col max-sm:gap-5 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
+          <div className="flex">
+            <div className="">
+              <div className="flex max-sm:flex-col max-sm:gap-1 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[70vw] max-sm:h-[55vh]">
                 <div className="flex items-center justify-center w-full">
                   <video ref={videoRef} autoPlay muted playsInline className="w-full h-auto" />
                 </div>
@@ -277,13 +277,13 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className="mt-5 ml-40 max-sm:ml-20 w-[20vw] max-sm:w-[60vw] flex max-sm:flex-wrap items-center justify-between">
+            <div className="mt-5 ml-40 max-sm:ml-20 w-[20vw] max-sm:w-[50vw] flex max-sm:flex-wrap items-center justify-between">
              <button onClick={startConnection} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16">Start Call</button>
              <button onClick={handleChangeUser} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16">Change Call</button>
              { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16 hidden" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
             </div>
           </div>
-          <div className="max-sm:w-full max-sm:absolute max-sm:p-5 w-full">
+           <div className={`max-sm:w-full max-sm:absolute max-sm:p-10 w-full ${ userConnected ? "backdrop-blur-sm" : ""} `}>
            {
             userConnected ? (
             <>
@@ -291,7 +291,7 @@ function Home() {
             <div className={`w-full h-[50vh] p-3 bg-green-300 shadow-2xl relative overflow-hidden ${ userConnected ? "scale-100 opacity-100" : ""}`}>
               <p className="font-bold">Ai : {aiMessage}</p>
               <div className="overflow-auto over">
-               <div className="w-full">
+               <div className="w-full h-[60vh]">
                  {messages.map((msg, i) => (
                    <div key={i} className={`flex mt-3 ${msg.sender === socket.id ? "justify-end" : ""}`}>
                      <div
