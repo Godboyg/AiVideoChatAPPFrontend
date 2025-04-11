@@ -83,6 +83,7 @@ function Home() {
     socket.on("offer", async ({ offer }) => {
       if (peerConnectionRef.current) {
         console.log("Received offer");
+        toast.success("Incoming Call!" , { position : "top-right" , autoClose : 1500 });
         await peerConnectionRef.current.setRemoteDescription(new RTCSessionDescription(offer));
         const answer = await peerConnectionRef.current.createAnswer();
         await peerConnectionRef.current.setLocalDescription(answer);
