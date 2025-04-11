@@ -192,14 +192,6 @@ function Home() {
       }
     };
 
-    const stream = videoRef.current?.srcObject;
-
-    if(stream instanceof MediaStream){
-      stream.getTracks().forEach((track) => {
-         pc.addTrack(track, stream);
-      });
-    }
-
     pc.ontrack = (event) => {
       console.log("evenst",event.streams[0]);
       if (event.streams && event.streams[0]) {
@@ -208,6 +200,14 @@ function Home() {
     };
 
     console.log("remote stream",remoteVideoRef.current?.srcObject);
+
+    const stream = videoRef.current?.srcObject;
+
+    if(stream instanceof MediaStream){
+      stream.getTracks().forEach((track) => {
+         pc.addTrack(track, stream);
+      });
+    }
 
     const offer = await pc.createOffer();
     await pc.setLocalDescription(offer);
