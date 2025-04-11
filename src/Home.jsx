@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 import { ToastContainer , toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom';
+import AdsterraSocialBar from "./AdsterraSocialBar";
 import { RiSendPlaneLine , RiCloseCircleLine , RiMessageFill, RiMessageLine} from "@remixicon/react";
 
 const API = import.meta.env.VITE_API_URL;
@@ -249,6 +250,7 @@ function Home() {
 
   return (
     <>
+      <AdsterraSocialBar />
     <ToastContainer />
     <div className={`h-screen max-sm:h-screen max-sm:w-full bg-green-100 max-sm:bg-green-100 ${ userConnected ? "backdrop-blur-sm" : ""} `}>
     {
@@ -321,6 +323,7 @@ function Home() {
       )
     }
     </div>
+      <AdsterraSocialBar />
     </>
   );
 }
