@@ -147,6 +147,10 @@ function Home() {
       console.log("user left after connection to connect", val);
     });
 
+    socket.on("call!",() => {
+      toast.success("Requesting Partner...!!" , { position : "top-right" , autoClose : 1200 });
+    });
+
     return () => {
       socket.off("offer");
 
@@ -180,12 +184,6 @@ function Home() {
     const pc = new RTCPeerConnection(configuration);
     console.log(pc);
     peerConnectionRef.current = pc;
-
-    if(videoRef.current){
-      toast.success("Requesting Partner...!!" , { position : "top-right" , autoClose : 1200 });
-    }else{
-      toast.error("try again!" , { position : "top-right" , autoClose : 1200 });
-    }
 
     pc.onicecandidate = (event) => {
       if (event.candidate) {
