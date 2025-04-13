@@ -63,7 +63,7 @@ function Home() {
   })
 
   useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+    navigator.mediaDevices.getUserMedia({ audio: true,video: true })
       .then((mediaStream) => {
         videoRef.current.srcObject = mediaStream;
       })
@@ -267,11 +267,11 @@ function Home() {
             <div className="flex">
               <div className="flex max-sm:flex-col max-sm:gap-1 items-center justify-center ml-10 h-[60vh] overflow-hidden w-[65vw] max-sm:w-[80vw] max-sm:h-[65vh]">
                 <div className="flex items-center justify-center w-full">
-                  <video ref={videoRef} autoPlay muted playsInline className="w-full h-auto rounded-xl" />
+                  <video ref={videoRef} autoPlay playsInline className="w-full h-auto rounded-xl" />
                 </div>
                 <div className="flex items-center justify-center w-full">
                   { remoteVideoRef ? (
-                    <video ref={remoteVideoRef} autoPlay muted playsInline className="w-full h-auto rounded-xl" />
+                    <video ref={remoteVideoRef} autoPlay playsInline className="w-full h-auto rounded-xl" />
                   ) : (
                     <p className="mt-5">Waiting for other user.....</p>
                   )}
