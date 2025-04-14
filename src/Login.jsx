@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer , toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import AdsterraSocialBar from './AdsterraSocialBar';
 
 function Login() {
     const [ email , setEmail ] = useState()
@@ -58,13 +57,6 @@ function Login() {
 
   return (
     <>
-        <a href="https://www.profitableratecpm.com/mveq4kmp?key=f741482cb9b858483ce9530c7901b337" target="_blank">
-  Click here to continue
-</a>
-  <a href="https://www.profitableratecpm.com/abus3vbg5?key=5dfc65d74936064585f84ca9ce0478d6" target="_blank">
-    click ad
-  </a>
-        <AdsterraSocialBar />
     <ToastContainer/>
     <div className="h-screen w-full bg-zinc-800 flex flex-col items-center justify-center max-sm:p-5">
         <h1 className="text-white font-bold text-4xl mb-5">Welcome to AI Video Chat</h1>
@@ -84,13 +76,6 @@ function Login() {
             </form>
         </div>
     </div>
-        <AdsterraSocialBar />
-        <a href="https://www.profitableratecpm.com/mveq4kmp?key=f741482cb9b858483ce9530c7901b337" target="_blank">
-  Click here to continue
-</a>
-  <a href="https://www.profitableratecpm.com/abus3vbg5?key=5dfc65d74936064585f84ca9ce0478d6" target="_blank">
-    click ad
-  </a>
     </>
   )
 }
