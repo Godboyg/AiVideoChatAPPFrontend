@@ -157,6 +157,7 @@ function Home() {
     }
 
     socket.on('showTyping', ({ fromUserId }) => {
+      console.log("typing");
       setShowTyping(true);
     }); 
 
