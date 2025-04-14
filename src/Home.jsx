@@ -7,7 +7,6 @@ import Cookies from 'js-cookie';
 import { ToastContainer , toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom';
-import AdsterraSocialBar from "./AdsterraSocialBar";
 import { RiSendPlaneLine , RiCloseCircleLine , RiMessageFill, RiMessageLine} from "@remixicon/react";
 import TypingDots from "./TypingDots";
 
