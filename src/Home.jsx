@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom';
 import AdsterraSocialBar from "./AdsterraSocialBar";
 import { RiSendPlaneLine , RiCloseCircleLine , RiMessageFill, RiMessageLine} from "@remixicon/react";
+import TypingDots from "./TypingDots";
 
 const API = import.meta.env.VITE_API_URL;
 console.log("api_key",API);
@@ -32,6 +33,7 @@ function Home() {
 
   const [ aiMessage , setAiMessage] = useState()
   const [ messages, setMessages] = useState([]);
+  const [ showTyping , setShowTyping] = useState(false);
   const [ userConnected , setUserConnected ] = useState(false)
   const [ value , setValue ] = useState("Hey!!")
   
@@ -68,7 +70,6 @@ function Home() {
         videoRef.current.srcObject = mediaStream;
       })
       .catch(console.error);
-
 
     socket.on("user found!",(m , msg , partnerSocket)=>{
       setUserConnected(true);
@@ -151,6 +152,19 @@ function Home() {
       toast.success("Requesting Partner...!!" , { position : "top-right" , autoClose : 1200 });
     });
 
+    if(value && partnerIdRef.current){
+      console.log("socket typing");
+      socket.emit('typing', { toUserId: partnerIdRef.current });
+    }
+
+    socket.on('showTyping', ({ fromUserId }) => {
+      setShowTyping(true);
+    }); 
+
+    socket.on('stopTyping', () => {
+      setShowTyping(false); 
+    });
+
     return () => {
       socket.off("offer");
 
@@ -167,8 +181,12 @@ function Home() {
       socket.off("disconnect");
 
       socket.off("received-message");
+
+      socket.off("showTyping");
+      
+      socket.off("stopTyping");
     };
-  },[]);
+  },[socket]);
 
   async function startConnection() {
     if (!videoRef.current) return;
@@ -247,12 +265,12 @@ function Home() {
     };
     console.log("peerid",partnerIdRef.current);
     socket.emit("send-message", message);
+    socket.emit('stopTyping', { toUserId: partnerIdRef.current });
     setValue("");
   }
 
   return (
     <>
-      <AdsterraSocialBar />
     <ToastContainer />
       <a href="https://www.profitableratecpm.com/abus3vbg5?key=5dfc65d74936064585f84ca9ce0478d6"></a>
     <div className={`h-screen max-sm:h-screen max-sm:w-full bg-green-100 max-sm:bg-green-100 ${ userConnected ? "backdrop-blur-sm" : ""} `}>
@@ -302,7 +320,14 @@ function Home() {
                       : "bg-white rounded-bl-none"
                      }`}
                     >
-                     {msg.text}
+{/*                      {msg.text} */}
+                       { showTyping ? (
+                         <TypingDots />
+                       ) : (
+                       <div>
+                        {msg.text}
+                       </div>
+                       )}
                     </div>
                    </div>
                  ))}
@@ -326,8 +351,6 @@ function Home() {
       )
     }
     </div>
-      <AdsterraSocialBar />
-      <a href="https://www.profitableratecpm.com/abus3vbg5?key=5dfc65d74936064585f84ca9ce0478d6"></a>
     </>
   );
 }
