@@ -190,7 +190,7 @@ function Home() {
       console.log("stopping typing");
       socket.emit('stopTyping', { toUserId: partnerIdRef.current });
       setShowTyping(false);
-    }, 600);
+    }, 2000);
 
     socket.on('stopTyping', () => {
       setShowTyping(false); 
