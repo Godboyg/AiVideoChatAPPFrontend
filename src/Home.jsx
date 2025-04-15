@@ -151,20 +151,6 @@ function Home() {
       toast.success("Requesting Partner...!!" , { position : "top-right" , autoClose : 1200 });
     });
 
-    if(value && partnerIdRef.current){
-      console.log("socket typing");
-      socket.emit('typing', { toUserId: partnerIdRef.current });
-    }
-
-    socket.on('showTyping', ({ fromUserId }) => {
-      console.log("typing");
-      setShowTyping(true);
-    }); 
-
-    socket.on('stopTyping', () => {
-      setShowTyping(false); 
-    });
-
     return () => {
       socket.off("offer");
 
@@ -181,12 +167,30 @@ function Home() {
       socket.off("disconnect");
 
       socket.off("received-message");
+    };
+  },[socket]);
 
+  useEffect(()=>{
+    if(value && partnerIdRef.current){
+      console.log("socket typing");
+      socket.emit('typing', { toUserId: partnerIdRef.current });
+    }
+
+    socket.on('showTyping', ({ fromUserId }) => {
+      console.log("typing");
+      setShowTyping(true);
+    }); 
+
+    socket.on('stopTyping', () => {
+      setShowTyping(false); 
+    });
+
+    return () => {
       socket.off("showTyping");
       
       socket.off("stopTyping");
-    };
-  },[socket]);
+    }
+  },[value])
 
   async function startConnection() {
     if (!videoRef.current) return;
