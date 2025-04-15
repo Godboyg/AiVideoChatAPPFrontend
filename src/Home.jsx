@@ -183,7 +183,7 @@ function Home() {
 
     setTimeout(() => {
       setShowTyping(false);
-    }, 500);
+    }, 300);
 
     socket.on('stopTyping', () => {
       setShowTyping(false); 
