@@ -190,14 +190,14 @@ function Home() {
 
     if(e.target.value.length){
       socket.emit('stopTyping', { toUserId: partnerIdRef.current });
-      setShowTyping(false);
+      // setShowTyping(false);
     }
 
     setTimeout(() => {
       console.log("stopping typing");
       socket.emit('stopTyping', { toUserId: partnerIdRef.current });
-      setShowTyping(false);
-    }, 2000);
+      // setShowTyping(false);
+    }, 5000);
 
     socket.on('stopTyping', () => {
       setShowTyping(false); 
