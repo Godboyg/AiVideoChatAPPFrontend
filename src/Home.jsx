@@ -49,7 +49,7 @@ function Home() {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [messages]);
+  }, [messages , value]);
 
   useEffect(()=>{
    setTimeout(() => {
