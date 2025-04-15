@@ -35,6 +35,7 @@ function Home() {
   const [ showTyping , setShowTyping] = useState(false);
   const [ userConnected , setUserConnected ] = useState(false)
   const [ value , setValue ] = useState("Hey!!")
+  const messagesEndRef = useRef(null);
   
   const [ authenticated , setAuthenticated ] = useState(false)
   const [ connected, setConnected] = useState(false);
@@ -43,6 +44,12 @@ function Home() {
   const videoRef = useRef(null);
   const remoteVideoRef = useRef(null);
   const remoteStream = new MediaStream();
+
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages]);
 
   useEffect(()=>{
    setTimeout(() => {
@@ -334,6 +341,7 @@ function Home() {
                    </div>
                  ))}
                  { showTyping && <TypingDots /> }
+                 <div ref={messagesEndRef} />
                </div>
                <div className="w-full h-12 bg-black flex items-center justify-between rounded-lg absolute bottom-4 left-0">
                  <input type="text" value={value} className="w-full h-full p-4 outline-none text-white" onChange={handleChangeInput} placeholder="Enter Message...."/>
