@@ -181,7 +181,12 @@ function Home() {
       setShowTyping(true);
     }); 
 
+    if(e.target.value.length){
+      setShowTyping(false);
+    }
+
     setTimeout(() => {
+      console.log("stopping typing";)
       setShowTyping(false);
     }, 300);
 
