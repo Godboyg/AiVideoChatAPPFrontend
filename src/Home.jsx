@@ -182,11 +182,13 @@ function Home() {
     }); 
 
     if(e.target.value.length){
+      socket.emit('stopTyping', { toUserId: partnerIdRef.current });
       setShowTyping(false);
     }
 
     setTimeout(() => {
-      console.log("stopping typing";)
+      console.log("stopping typing");
+      socket.emit('stopTyping', { toUserId: partnerIdRef.current });
       setShowTyping(false);
     }, 300);
 
