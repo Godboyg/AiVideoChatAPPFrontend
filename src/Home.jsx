@@ -170,27 +170,25 @@ function Home() {
     };
   },[socket]);
 
-  useEffect(()=>{
-    if(value && partnerIdRef.current){
-      console.log("socket typing");
-      socket.emit('typing', { toUserId: partnerIdRef.current });
-    }
+  const handleChangeInput = (e)=>{
+    e.preventDefault();
+    setValue(e.target.value);
+    console.log("socket typing");
+    socket.emit('typing', { toUserId: partnerIdRef.current });
 
     socket.on('showTyping', ({ fromUserId }) => {
       console.log("typing");
       setShowTyping(true);
     }); 
 
+    setTimeout(() => {
+      setShowTyping(false);
+    }, 500);
+
     socket.on('stopTyping', () => {
       setShowTyping(false); 
     });
-
-    return () => {
-      socket.off("showTyping");
-      
-      socket.off("stopTyping");
-    }
-  },[value])
+  }
 
   async function startConnection() {
     if (!videoRef.current) return;
@@ -324,20 +322,14 @@ function Home() {
                       : "bg-white rounded-bl-none"
                      }`}
                     >
-{/*                      {msg.text} */}
-                       { showTyping ? (
-                         <TypingDots />
-                       ) : (
-                       <div>
-                        {msg.text}
-                       </div>
-                       )}
+                       {msg.text}
                     </div>
                    </div>
                  ))}
+                 { showTyping && <TypingDots /> }
                </div>
                <div className="w-full h-12 bg-black flex items-center justify-between rounded-lg absolute bottom-4 left-0">
-                 <input type="text" value={value} onChange={(e)=>setValue(e.target.value)} className="w-full h-full p-4 outline-none text-white" placeholder="Enter Message...."/>
+                 <input type="text" value={value} className="w-full h-full p-4 outline-none text-white" onChange={handleChangeInput} placeholder="Enter Message...."/>
                  <RiSendPlaneLine className="text-white mr-3" onClick={sendMessage} size={30}/>
                </div>
               </div>
