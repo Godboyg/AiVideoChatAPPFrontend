@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer , toast } from 'react-toastify'
@@ -27,7 +27,7 @@ function Login() {
         setEmail("");
         setInterest("");
         const data = { email , interest };
-        const res = await axios.post(`${API}/login`, data);
+        const res = await axios.post(`${API}/login`, data , { timeout: 5000 });
         console.log(res.data.message);
         if(res.data.message === "user created"){
             toast.success("Login Successful!", { position: "top-right", onClose: () => navigate("/home"),
