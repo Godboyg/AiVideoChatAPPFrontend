@@ -36,6 +36,7 @@ function Home() {
   const [ userConnected , setUserConnected ] = useState(false)
   const [ value , setValue ] = useState("Hey!!")
   const messagesEndRef = useRef(null);
+  const [ activeUsers , setActiveUsers ] = useState([]);
   
   const [ authenticated , setAuthenticated ] = useState(false)
   const [ connected, setConnected] = useState(false);
@@ -158,6 +159,10 @@ function Home() {
       toast.success("Requesting Partner...!!" , { position : "top-right" , autoClose : 1200 });
     });
 
+    socket.on('AllActiveUsers', (users) => {
+      setActiveUsers(users);
+    });
+
     return () => {
       socket.off("offer");
 
@@ -174,6 +179,8 @@ function Home() {
       socket.off("disconnect");
 
       socket.off("received-message");
+
+      socket.off("AllActiveUsers");
     };
   },[socket]);
 
@@ -301,7 +308,13 @@ function Home() {
       authenticated ? (
         <div className="max-sm:relative">
           <div className="flex items-center justify-between py-3 px-5 max-sm:py-3 max-sm:px-4 bg-green-200 max-sm:bg-green-200">
-            <h2 className="font-bold text-xl">DeepMeet</h2>
+            <div className="flex items-center justify-center gap-2">
+             <h2 className="font-bold text-2xl">DeepMeet</h2>
+             <div className="flex items-center justify-center gap-1">
+               <div className="h-4 w-4 rounded-full bg-green-400 shadow-md"></div>
+               <p className="font-black">{activeUsers.length}</p>
+             </div>
+            </div>
             <button className="p-3 bg-black rounded-xl text-white hover:cursor-pointer max-sm:mr-0" onClick={handleLogout}>LogOut</button>
           </div>
           <div className="">
