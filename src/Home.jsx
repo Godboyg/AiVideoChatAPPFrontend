@@ -188,17 +188,17 @@ function Home() {
       setShowTyping(true);
     }); 
 
-    if(e.target.value.length){
-      socket.emit('stopTyping', { toUserId: partnerIdRef.current });
-      // setShowTyping(false);
-    }
-
     setTimeout(() => {
       console.log("stopping typing");
       socket.emit('stopTyping', { toUserId: partnerIdRef.current });
       // setShowTyping(false);
     }, 5000);
 
+    if(e.target.value.length){
+      socket.emit('stopTyping', { toUserId: partnerIdRef.current });
+      // setShowTyping(false);
+    }
+    
     socket.on('stopTyping', () => {
       setShowTyping(false); 
     });
