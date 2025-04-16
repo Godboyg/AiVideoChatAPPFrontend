@@ -322,7 +322,7 @@ function Home() {
             <div className="mt-5 ml-40 max-sm:ml-20 w-[20vw] max-sm:w-[50vw] flex max-sm:flex-wrap items-center justify-between">
              <button onClick={startConnection} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16">Start Call</button>
              <button onClick={handleChangeUser} className="h-16 w-24 outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16">Change Call</button>
-             { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16 hidden" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
+             { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
             </div>
           </div>
            <div className={`max-sm:w-full max-sm:absolute top-10 max-sm:p-10 w-full ${ userConnected ? "inset-0 bg-opacity-50 backdrop-blur" : ""} `}>
