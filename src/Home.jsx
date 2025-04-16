@@ -188,15 +188,15 @@ function Home() {
       setShowTyping(true);
     }); 
 
-    setTimeout(() => {
-      console.log("stopping typing");
+    if(e.target.value.length === 0){
       socket.emit('stopTyping', { toUserId: partnerIdRef.current });
       // setShowTyping(false);
-    }, 5000);
-
-    if(e.target.value.length){
-      socket.emit('stopTyping', { toUserId: partnerIdRef.current });
+    }else{
+      setTimeout(() => {
+        console.log("stopping typing");
+        socket.emit('stopTyping', { toUserId: partnerIdRef.current });
       // setShowTyping(false);
+      }, 4000);
     }
     
     socket.on('stopTyping', () => {
@@ -327,7 +327,6 @@ function Home() {
               <p className="font-bold">Ai : {aiMessage}</p>
               <div className="overflow-auto over">
                <div className="w-full max-sm:h-[52vh] h-[47vh]">
-                 { showTyping && <TypingDots /> }
                  {messages.map((msg, i) => (
                    <div key={i} className={`flex mt-3 ${msg.sender === socket.id ? "justify-end" : ""}`}>
                      <div
@@ -341,6 +340,7 @@ function Home() {
                     </div>
                    </div>
                  ))}
+                 { showTyping && <TypingDots /> }
                  <div ref={messagesEndRef} />
                </div>
                <div className="w-full h-12 bg-black flex items-center justify-between rounded-lg absolute bottom-4 left-0">
