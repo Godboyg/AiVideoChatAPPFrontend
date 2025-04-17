@@ -26,24 +26,31 @@ function Login() {
         e.preventDefault();
         setEmail("");
         setInterest("");
-        const data = { email , interest };
-        const res = await axios.post(`${API}/login`, data , { timeout: 5000 });
-        console.log(res.data.message);
-        if(res.data.message === "user created"){
+        try{
+         const data = { email , interest };
+         const res = await axios.post(`${API}/login`, data , { timeout: 5000 });
+         console.log(res.data.message);
+         if(res.data.message === "user created"){
             toast.success("Login Successful!", { position: "top-right", onClose: () => navigate("/home"),
                 autoClose: 1500 })
-        }
-        else if(res.data.message === "user updated"){
+         }
+         else if(res.data.message === "user updated"){
             toast.success("User found updated Successfully!", { position: "top-right", onClose: () => navigate("/home"),
                 autoClose: 1500 }); 
-        }
-        else{
-            toast.error("failed login!", { position: "top-right", autoClose: 3000 });
-        }
+         }
 
-        if(res.data.token){
+         if(res.data.token){
             const token = res.data.token;
             document.cookie = `token=${token}; max-age=${15 * 24 * 60 * 60}; Secure; SameSite=Strict`;
+         }
+        }catch(error){
+          if (error.code === 'ECONNABORTED') {
+           toast.error("Request timed out!", { position: "top-right", autoClose: 1200 });
+           console.error("Request timed out");
+          } else {
+            console.error("Request failed:", error.message);
+            toast.error("failed login!", { position: "top-right", autoClose: 1200 });
+          }
         }
     }
 
