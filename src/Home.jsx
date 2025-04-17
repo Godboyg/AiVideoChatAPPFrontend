@@ -185,7 +185,7 @@ function Home() {
 
       socket.off("AllActiveUsers");
     };
-  },[socket]);
+  });
 
   const handleChangeInput = (e)=>{
     e.preventDefault();
