@@ -37,6 +37,7 @@ function Home() {
   const [ value , setValue ] = useState("Hey!!")
   const messagesEndRef = useRef(null);
   const [ activeUsers , setActiveUsers ] = useState([]);
+  const [ active , setActive ] = useState(false);
   
   const [ authenticated , setAuthenticated ] = useState(false)
   const [ connected, setConnected] = useState(false);
@@ -132,6 +133,7 @@ function Home() {
     })
 
     socket.on("disconnect",()=>{
+      setActive(false);
       setUserConnected(false);
       window.location.reload();
       toast.error("user disconnected" , { position : "top-right" , autoClose : 1200 });
@@ -160,6 +162,7 @@ function Home() {
     });
 
     socket.on('AllActiveUsers', (users) => {
+      setActive(true);
       setActiveUsers(users);
     });
 
@@ -311,7 +314,13 @@ function Home() {
             <div className="flex items-center justify-center gap-2">
              <h2 className="font-bold text-2xl">DeepMeet</h2>
              <div className="flex items-center justify-center gap-1">
-               <div className="h-4 w-4 rounded-full bg-green-400 shadow-md"></div>
+               {
+                 Active ? (
+                   <div className="h-4 w-4 rounded-full bg-green-400 shadow-md"></div>
+                 ) : (
+                   <div className="h-4 w-4 rounded-full bg-red-400 shadow-md"></div>
+                 )
+               }
                <p className="font-black">{activeUsers.length}</p>
              </div>
             </div>
