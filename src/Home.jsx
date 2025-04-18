@@ -309,7 +309,7 @@ function Home() {
     <>
     <ToastContainer />
       <a href="https://www.profitableratecpm.com/abus3vbg5?key=5dfc65d74936064585f84ca9ce0478d6"></a>
-    <div className={`h-screen max-sm:h-screen max-sm:w-full bg-green-100 max-sm:bg-green-100 ${ userConnected ? "backdrop-blur-sm" : ""} `}>
+    <div className="h-screen max-sm:h-screen max-sm:w-full bg-green-100 max-sm:bg-green-100">
     {
       authenticated ? (
         <div className="max-sm:relative">
