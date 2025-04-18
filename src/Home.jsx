@@ -33,6 +33,7 @@ function Home() {
   const [ aiMessage , setAiMessage] = useState()
   const [ messages, setMessages] = useState([]);
   const [ showTyping , setShowTyping] = useState(false);
+  const [ remote , setRemote ] = useState(false);
   const [ userConnected , setUserConnected ] = useState(false)
   const [ value , setValue ] = useState("Hey!!")
   const messagesEndRef = useRef(null);
@@ -133,6 +134,7 @@ function Home() {
     })
 
     socket.on("disconnect",()=>{
+      setRemote(false);
       setActive(false);
       setUserConnected(false);
       window.location.reload();
@@ -247,6 +249,7 @@ function Home() {
       // remoteVideoRef.current.srcObject = event.streams[0];
       if (remoteVideoRef.current && event.streams[0]) {
         remoteVideoRef.current.srcObject = event.streams[0];
+        setRemote(true);
       }
     };
 
@@ -333,7 +336,7 @@ function Home() {
                   <video ref={videoRef} autoPlay playsInline className="w-full h-auto rounded-xl" />
                 </div>
                 <div className="flex items-center justify-center w-full">
-                  { remoteVideoRef ? (
+                  { remote ? (
                     <video ref={remoteVideoRef} autoPlay playsInline className="w-full h-auto rounded-xl" />
                   ) : (
                     <p className="mt-5 text-black">Waiting for other user.....</p>
