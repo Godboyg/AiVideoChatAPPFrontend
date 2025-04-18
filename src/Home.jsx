@@ -350,12 +350,12 @@ function Home() {
              { partnerIdRef.current && <button className="h-16 w-24 max-sm:flex items-center justify-center outline-none rounded-full hover:cursor-pointer bg-black text-white max-sm:text-[3vw] max-sm:h-16" onClick={() => setUserConnected(true)}><RiMessageLine /></button> }
             </div>
           </div>
-           <div className={`max-sm:w-full max-sm:absolute max-sm:p-10 w-full transition-all ease-in-out duration-300 ${ userConnected ? "inset-0 bg-opacity-50 backdrop-blur" : ""} `}>
+           <div className={`max-sm:w-full max-sm:absolute max-sm:p-10 w-full transition-all ease-in-out duration-350 ${ userConnected ? "inset-0 bg-opacity-50 backdrop-blur" : ""} `}>
            {
             userConnected ? (
             <>
             <p className="flex items-center justify-end mb-3"><RiCloseCircleLine size={30} onClick={() => setUserConnected(false)}/></p>
-            <div className={`w-full h-[70vh] p-3 bg-green-300 shadow-2xl overflow-hidden transition-all ease-in-out duration-300 ${ userConnected ? "scale-100 opacity-100" : "scale-95 opacity-0"}`}>
+            <div className={`w-full h-[70vh] p-3 bg-green-300 shadow-2xl overflow-hidden transition-all ease-in-out duration-400 ${ userConnected ? "scale-100 opacity-100" : "scale-85 opacity-0"}`}>
               <p className="font-bold">Ai : {aiMessage}</p>
               <div className="overflow-auto over">
                <div className="w-full max-sm:h-[52vh] h-[47vh]">
