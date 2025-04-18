@@ -336,7 +336,7 @@ function Home() {
                   <video ref={videoRef} autoPlay playsInline className="w-full h-auto rounded-xl" />
                 </div>
                 <div className="flex items-center justify-center w-full">
-                  { remoteVideoRef.current?.srcObject ? (
+                  { remoteVideoRef ? (
                     <video ref={remoteVideoRef} autoPlay playsInline className="w-full h-auto rounded-xl" />
                   ) : (
                     <p className="mt-5 text-black">Waiting for other user.....</p>
