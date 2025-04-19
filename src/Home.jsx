@@ -11,7 +11,6 @@ import { RiSendPlaneLine , RiCloseCircleLine , RiMessageFill, RiMessageLine} fro
 import TypingDots from "./TypingDots";
 
 const API = import.meta.env.VITE_API_URL;
-console.log("api_key",API);
 const socket = io(API);
 
 function Home() {
@@ -69,16 +68,16 @@ function Home() {
     }, 2000);
  },[])
 
-  socket.on("connect",() => {
-    console.log("socket connected",socket.id);
-  })
-
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ audio: true,video: true })
       .then((mediaStream) => {
         videoRef.current.srcObject = mediaStream;
       })
       .catch(console.error);
+
+    socket.on("connect",() => {
+      console.log("socket connected",socket.id);
+    })
 
     socket.on("user found!",(m , msg , partnerSocket)=>{
       setUserConnected(true);
@@ -187,7 +186,7 @@ function Home() {
 
       socket.off("AllActiveUsers");
     };
-  },[socket]);
+  },[]);
 
   const handleChangeInput = (e)=>{
     e.preventDefault();
