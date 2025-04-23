@@ -370,7 +370,11 @@ function Home() {
                     </div>
                    </div>
                  ))}
-                 { showTyping && <TypingDots /> }
+                 { showTyping && (
+                    <div className={`flex w-full ${ partnerIdRef.current === socket.id ? "justify-end" : "justify-start"}`}>
+                      <TypingDots />
+                    </div>
+                  ) }
                  <div ref={messagesEndRef} />
                </div>
                <div className="w-full h-12 bg-black flex items-center justify-between rounded-lg absolute bottom-4 left-0">
