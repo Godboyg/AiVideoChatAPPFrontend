@@ -371,7 +371,7 @@ function Home() {
                    </div>
                  ))}
                  { showTyping && (
-                    <div className={`flex w-full ${ partnerIdRef.current === socket.id ? "justify-end" : "justify-start"}`}>
+                    <div className={`flex w-full ${ partnerIdRef.current === socket.id ? "flex-end" : "flex-start"}`}>
                       <TypingDots />
                     </div>
                   ) }
