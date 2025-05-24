@@ -28,7 +28,7 @@ function Login() {
         setInterest("");
         try{
          const data = { email , interest };
-         const res = await axios.post(`${API}/login`, data , { timeout: 5000 });
+         const res = await axios.post(`${API}/login`, data , { timeout: 8000 });
          console.log(res.data.message);
          if(res.data.message === "user created"){
             toast.success("Login Successful!", { position: "top-right", onClose: () => navigate("/home"),
